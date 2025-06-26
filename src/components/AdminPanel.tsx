@@ -176,7 +176,7 @@ export function AdminPanel() {
     <div style="margin-bottom: 24px;">
       <h3 style="font-family: 'Forum', serif; font-size: 18px; font-weight: 400; color: rgb(239, 231, 210); margin-bottom: 16px; text-align: center; letter-spacing: 2px; text-transform: uppercase;">Working Hours</h3>
       <div style="display: flex; flex-direction: column; gap: 8px;">
-        ${Object.entries(data.workingHours).map(([day, hours]) => {
+        ${Object.entries(data.workingHours || {}).map(([day, hours]) => {
           const dayName = day.charAt(0).toUpperCase() + day.slice(1)
           const statusColor = hours.status === 'green' ? 'rgb(34, 197, 94)' :
                              hours.status === 'yellow' ? 'rgb(234, 179, 8)' : 'rgb(239, 68, 68)'
