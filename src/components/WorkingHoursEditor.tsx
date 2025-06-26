@@ -42,7 +42,7 @@ export function WorkingHoursEditor({ data, onUpdate }: WorkingHoursEditorProps) 
         <CardTitle className="text-xl font-semibold">Редактирование рабочих часов</CardTitle>
       </CardHeader>
       <CardContent className="space-y-6">
-        {Object.entries(data.workingHours).map(([day, hours]) => (
+        {Object.entries(data.workingHours || {}).map(([day, hours]) => (
           <div key={day} className="grid grid-cols-1 md:grid-cols-5 gap-4 p-4 border rounded-lg">
             <div className="flex items-center space-x-2">
               <Label className="font-medium text-base min-w-[100px]">
@@ -92,12 +92,12 @@ export function WorkingHoursEditor({ data, onUpdate }: WorkingHoursEditorProps) 
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  {Object.entries(statusLabels).map(([color, label]) => (
+                  {Object.entries(statusLabels || {}).map(([color, label]) => (
                     <SelectItem key={color} value={color}>
                       <div className="flex items-center gap-2">
                         <div
                           className="w-3 h-3 rounded-full"
-                          style={{ backgroundColor: statusColorMap[color as StatusColor] }}
+                          style={{ backgroundColor: statusColorMap?.[color as StatusColor] || '#gray' }}
                         />
                         {label}
                       </div>
@@ -112,7 +112,7 @@ export function WorkingHoursEditor({ data, onUpdate }: WorkingHoursEditorProps) 
         <div className="mt-6 p-4 bg-gray-50 rounded-lg">
           <h4 className="font-medium mb-2">Цветовые индикаторы:</h4>
           <div className="flex gap-4 flex-wrap">
-            {Object.entries(statusLabels).map(([color, label]) => (
+            {Object.entries(statusLabels || {}).map(([color, label]) => (
               <Badge key={color} variant="outline" className="flex items-center gap-2">
                 <div
                   className="w-3 h-3 rounded-full"
