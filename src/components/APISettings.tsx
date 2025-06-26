@@ -48,7 +48,8 @@ export function APISettings({ onSave }: APISettingsProps) {
   const testConnection = async () => {
     setIsTesting(true)
     try {
-      const response = await fetch(`${config.baseUrl}/api/test`, {
+      const baseUrl = config.baseUrl.replace(/\/$/, ''); // убираем слеш в конце
+      const response = await fetch(`${baseUrl}/api/test`, {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${config.apiKey}`,
