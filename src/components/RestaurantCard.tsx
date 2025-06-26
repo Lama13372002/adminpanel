@@ -33,7 +33,7 @@ export function RestaurantCard({ data }: RestaurantCardProps) {
           Working Hours
         </h3>
         <div className="space-y-2">
-          {Object.entries(data.workingHours).map(([day, hours]) => (
+          {Object.entries(data.workingHours || {}).map(([day, hours]) => (
             <div
               key={day}
               className="flex justify-between items-center p-2 rounded-lg bg-white/5 border border-amber-100/10"
