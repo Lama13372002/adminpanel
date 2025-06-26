@@ -59,7 +59,8 @@ export function AdminPanel() {
 
     setIsSyncing(true)
     try {
-      const response = await fetch(`${apiConfig.baseUrl}/api/restaurant/working-hours.php`, {
+      const baseUrl = apiConfig.baseUrl.replace(/\/$/, ''); // убираем слеш в конце
+      const response = await fetch(`${baseUrl}/api/restaurant/working-hours.php`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${apiConfig.apiKey}`,
@@ -91,7 +92,8 @@ export function AdminPanel() {
 
     setIsSyncing(true)
     try {
-      const response = await fetch(`${apiConfig.baseUrl}/api/restaurant/working-hours.php`, {
+      const baseUrl = apiConfig.baseUrl.replace(/\/$/, ''); // убираем слеш в конце
+      const response = await fetch(`${baseUrl}/api/restaurant/working-hours.php`, {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${apiConfig.apiKey}`,
